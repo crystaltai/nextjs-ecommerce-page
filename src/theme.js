@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles';
 
 // custom theme for this app
 const theme = createTheme({
@@ -36,7 +36,7 @@ const theme = createTheme({
       400: '#4C566A',
       500: '#434C5E',
       600: '#3B4252',
-      700: '#2E3440'
+      700: '#2E3440',
     },
     divider: '#3B4252',
   },
@@ -49,14 +49,14 @@ const theme = createTheme({
     MuiButton: {
       defaultProps: {
         disableElevation: true, // Disable button shadow
-      }
+      },
     },
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true, // Disable ripple effect when clicked
       },
     },
-  }
+  },
 });
 
 export default theme;
