@@ -56,6 +56,13 @@ const theme = createTheme({
         disableRipple: true, // Disable ripple effect when clicked
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'transparent',
+        },
+      },
+    },
   },
 });
 

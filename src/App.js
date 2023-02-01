@@ -13,10 +13,10 @@ function App() {
       <CssBaseline />
       <div className='App'>
         <Header />
-        <Box sx={{ flexGrow: 1, padding: '100px' }}>
-          <Grid container spacing={8}>
-            {coffeeData.map(coffee => (
-              <Grid item>
+        <Box sx={{ flexGrow: 1, padding: '50px' }}>
+          <Grid container spacing={{ xs: 4, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            {coffeeData.map((coffee, index) => (
+              <Grid item xs={4} sm={4} md={4} key={index}>
                 <Product
                   key={coffee.name}
                   name={coffee.name}
