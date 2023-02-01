@@ -44,6 +44,9 @@ const theme = createTheme({
     primary: '#2E3440',
     secondary: '#434C5E',
   },
+  typography: {
+    fontFamily: 'Inter, sans-seriff',
+  },
   components: {
     // Buttons
     MuiButton: {

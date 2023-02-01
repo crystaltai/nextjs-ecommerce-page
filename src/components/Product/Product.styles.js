@@ -9,6 +9,7 @@ const RoastName = styled(Typography)(
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
+    font-family: 'Inter', sans-seriff;
   `
 );
 
