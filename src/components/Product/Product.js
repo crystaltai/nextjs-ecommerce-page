@@ -1,18 +1,14 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, Typography } from '@mui/material';
 
-function Product() {
+function Product({ name, notes, price, picture }) {
   return (
-    <Card variant='outlined' sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} elevation={0}>
       <CardActionArea>
-        <CardMedia
-          component='img'
-          height='140'
-          src='https://cdn.shopify.com/s/files/1/0035/9372/products/bellavistagesha_750x.png?v=1671229082'
-          alt='coffee-bag-1'
-        />
+        <CardMedia component='img' height='345' src={picture} alt={name} />
+        <Typography variant='h6'>{name}</Typography>
       </CardActionArea>
     </Card>
   );

@@ -1,8 +1,10 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './theme';
 import Header from './components/Header/Header';
-import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Product from './components/Product/Product';
+import coffeeData from './constants';
 import './App.css';
 
 function App() {
@@ -11,8 +13,21 @@ function App() {
       <CssBaseline />
       <div className='App'>
         <Header />
-        <Button variant='contained'>test</Button>
-        <Product />
+        <Box sx={{ flexGrow: 1, padding: '20px' }}>
+          <Grid container spacing={3}>
+            {coffeeData.map(coffee => (
+              <Grid item>
+                <Product
+                  key={coffee.name}
+                  name={coffee.name}
+                  notes={coffee.notes}
+                  price={coffee.price}
+                  picture={coffee.picture}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </div>
     </ThemeProvider>
   );
