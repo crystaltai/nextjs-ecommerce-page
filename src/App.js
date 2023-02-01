@@ -13,8 +13,8 @@ function App() {
       <CssBaseline />
       <div className='App'>
         <Header />
-        <Box sx={{ flexGrow: 1, padding: '20px' }}>
-          <Grid container spacing={3}>
+        <Box sx={{ flexGrow: 1, padding: '100px' }}>
+          <Grid container spacing={8}>
             {coffeeData.map(coffee => (
               <Grid item>
                 <Product
