@@ -16,7 +16,7 @@ function App() {
         <Header />
         <Container>
         <Box sx={{ padding: '30px', marginTop: '30px' }}>
-          <Grid container spacing={{ xs: 4, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+          <Grid container spacing={{ xs: 4, md: 5 }} columns={{ xs: 4, sm: 8, md: 12 }}>
             {coffeeData.map((coffee, index) => (
               <Grid item xs={4} sm={4} md={4} key={index} sx={{ padding: '0' }}>
                 <Product
