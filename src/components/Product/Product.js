@@ -9,12 +9,12 @@ function Product({ name, notes, price, picture }) {
   return (
     <Card sx={{ maxWidth: 345 }} elevation={0}>
       <CardActionArea>
-        <CardMedia component='img' height='345' src={picture} alt={name} />
+        <CardMedia component='img' height='100%' src={picture} alt={name} />
         <Box sx={{ padding: '5px' }}>
           <RoastName>{name}</RoastName>
           <Box>
             {notes.map((note, index) => (
-              <TastingNotes>{note} </TastingNotes>
+              <TastingNotes key={index}>{note} </TastingNotes>
             ))}
           </Box>
           <Price>${((price * 100) / 100).toFixed(2)}</Price>
