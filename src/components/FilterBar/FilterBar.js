@@ -1,10 +1,10 @@
-import { Typography } from '@mui/material';
 import Box from '@mui/system/Box';
+import { FilterHeader } from './FilterBar.styles';
 
 function FilterBar() {
   return (
-    <Box>
-      <Typography>Find your bag</Typography>
+    <Box sx={{ minWidth: '300px' }}>
+      <FilterHeader>Find your bag</FilterHeader>
     </Box>
   );
 }
