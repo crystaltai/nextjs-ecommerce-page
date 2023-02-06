@@ -9,7 +9,7 @@ Project to create an e-commerce page of a fake coffee roasting company (using Ve
 ## Run the project
 
 ```
-git clone git@github.com:crystaltai/react-tips-calculator.git
+git clone git@github.com:crystaltai/react-ecommerce-page.git
 npm install
 npm run start
 ```
