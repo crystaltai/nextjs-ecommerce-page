@@ -8,8 +8,35 @@ import Product from './components/Product/Product';
 import coffeeData from './constants';
 import './App.css';
 import FilterBar from './components/FilterBar/FilterBar';
+import { useState } from 'react';
+
+// Filter bags for all unique values + assign false active - Roast Types
+let uniqueRoastTypes = coffeeData.map(bag => bag.details.type);
+uniqueRoastTypes = uniqueRoastTypes.filter((type, index) => uniqueRoastTypes.indexOf(type) === index);
+const uniqueRoastTypesActive = {};
+uniqueRoastTypes.forEach(e => {
+  uniqueRoastTypesActive[e] = 'false';
+});
+
+// Filter bags for all unique values + assign false active - Roast Level
+let uniqueRoastLevels = coffeeData.map(bag => bag.details.roast);
+uniqueRoastLevels = uniqueRoastLevels.filter((type, index) => uniqueRoastLevels.indexOf(type) === index);
+const uniqueRoastLevelsActive = {};
+uniqueRoastLevels.forEach(e => {
+  uniqueRoastLevelsActive[e] = 'false';
+});
+
+// Filter bags for all unique values + assign false active - Roast Origin
+let uniqueRoastOrigins = coffeeData.map(bag => bag.details.origin);
+uniqueRoastOrigins = uniqueRoastOrigins.filter((type, index) => uniqueRoastOrigins.indexOf(type) === index);
+const uniqueRoastOriginsActive = {};
+uniqueRoastOrigins.forEach(e => {
+  uniqueRoastOriginsActive[e] = 'false';
+});
 
 function App() {
+  const [filterRoastTypes, setFilterRoastTypes] = useState(uniqueRoastTypesActive);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -20,7 +47,12 @@ function App() {
         <Box sx={{ display: 'flex' }}>
           {/* Filter Section */}
           <Box sx={{ paddingLeft: '20px', paddingRight: '20px' }}>
-            <FilterBar />
+            <FilterBar
+              coffeeData={coffeeData}
+              uniqueRoastTypes={uniqueRoastTypes}
+              uniqueRoastLevels={uniqueRoastLevels}
+              uniqueRoastOrigins={uniqueRoastOrigins}
+            />
           </Box>
           {/* Product Listings */}
           <Box sx={{ flexGrow: 2 }}>

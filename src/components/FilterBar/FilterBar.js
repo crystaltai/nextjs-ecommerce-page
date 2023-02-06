@@ -1,21 +1,8 @@
 import { Autocomplete, Checkbox, FormControlLabel, FormGroup, TextField } from '@mui/material';
 import Box from '@mui/system/Box';
 import { FilterCategory, FilterHeader } from './FilterBar.styles';
-import coffeeData from '../../constants';
 
-// Filter bags for all unique values - Roast Types
-let uniqueRoastTypes = coffeeData.map(bag => bag.details.type);
-uniqueRoastTypes = uniqueRoastTypes.filter((type, index) => uniqueRoastTypes.indexOf(type) === index);
-
-// Filter bags for all unique values - Roast Level
-let uniqueRoastLevels = coffeeData.map(bag => bag.details.roast);
-uniqueRoastLevels = uniqueRoastLevels.filter((type, index) => uniqueRoastLevels.indexOf(type) === index);
-
-// Filter bags for all unique values - Roast Origin
-let uniqueRoastOrigins = coffeeData.map(bag => bag.details.origin);
-uniqueRoastOrigins = uniqueRoastOrigins.filter((type, index) => uniqueRoastOrigins.indexOf(type) === index);
-
-function FilterBar() {
+function FilterBar({ coffeeData, uniqueRoastTypes, uniqueRoastLevels, uniqueRoastOrigins }) {
   return (
     <Box sx={{ minWidth: '250px', marginLeft: '30px' }}>
       <FilterHeader>Find your roast</FilterHeader>
