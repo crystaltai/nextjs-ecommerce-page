@@ -15,7 +15,7 @@ let uniqueRoastTypes = coffeeData.map(bag => bag.details.type);
 uniqueRoastTypes = uniqueRoastTypes.filter((type, index) => uniqueRoastTypes.indexOf(type) === index);
 const uniqueRoastTypesActive = {};
 uniqueRoastTypes.forEach(e => {
-  uniqueRoastTypesActive[e] = 'false';
+  uniqueRoastTypesActive[e] = false;
 });
 
 // Filter bags for all unique values + assign false active - Roast Level
@@ -23,7 +23,7 @@ let uniqueRoastLevels = coffeeData.map(bag => bag.details.roast);
 uniqueRoastLevels = uniqueRoastLevels.filter((type, index) => uniqueRoastLevels.indexOf(type) === index);
 const uniqueRoastLevelsActive = {};
 uniqueRoastLevels.forEach(e => {
-  uniqueRoastLevelsActive[e] = 'false';
+  uniqueRoastLevelsActive[e] = false;
 });
 
 // Filter bags for all unique values + assign false active - Roast Origin
@@ -31,11 +31,22 @@ let uniqueRoastOrigins = coffeeData.map(bag => bag.details.origin);
 uniqueRoastOrigins = uniqueRoastOrigins.filter((type, index) => uniqueRoastOrigins.indexOf(type) === index);
 const uniqueRoastOriginsActive = {};
 uniqueRoastOrigins.forEach(e => {
-  uniqueRoastOriginsActive[e] = 'false';
+  uniqueRoastOriginsActive[e] = false;
 });
 
 function App() {
   const [filterRoastTypes, setFilterRoastTypes] = useState(uniqueRoastTypesActive);
+  console.log(filterRoastTypes);
+
+  // Toggle filter Active
+  const handleFilterToggle = e => {
+    const { name, checked } = e.target;
+    if (checked === true) {
+      setFilterRoastTypes(prevObj => ({ ...prevObj, [name]: true }));
+    } else {
+      setFilterRoastTypes(prevObj => ({ ...prevObj, [name]: false }));
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -52,6 +63,7 @@ function App() {
               uniqueRoastTypes={uniqueRoastTypes}
               uniqueRoastLevels={uniqueRoastLevels}
               uniqueRoastOrigins={uniqueRoastOrigins}
+              handleFilterToggle={handleFilterToggle}
             />
           </Box>
           {/* Product Listings */}

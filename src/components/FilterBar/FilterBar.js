@@ -2,7 +2,7 @@ import { Autocomplete, Checkbox, FormControlLabel, FormGroup, TextField } from '
 import Box from '@mui/system/Box';
 import { FilterCategory, FilterHeader } from './FilterBar.styles';
 
-function FilterBar({ coffeeData, uniqueRoastTypes, uniqueRoastLevels, uniqueRoastOrigins }) {
+function FilterBar({ coffeeData, uniqueRoastTypes, uniqueRoastLevels, uniqueRoastOrigins, handleFilterToggle }) {
   return (
     <Box sx={{ minWidth: '250px', marginLeft: '30px' }}>
       <FilterHeader>Find your roast</FilterHeader>
@@ -17,7 +17,7 @@ function FilterBar({ coffeeData, uniqueRoastTypes, uniqueRoastLevels, uniqueRoas
       <FilterCategory>Type</FilterCategory>
       <FormGroup>
         {uniqueRoastTypes.map(type => (
-          <FormControlLabel label={type} control={<Checkbox name={type} />} />
+          <FormControlLabel label={type} control={<Checkbox name={type} onChange={handleFilterToggle} />} />
         ))}
       </FormGroup>
       {/* Roast Level */}
