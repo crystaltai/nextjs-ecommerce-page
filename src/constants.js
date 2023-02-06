@@ -25,7 +25,7 @@ const coffeeData = [
     details: {
       type: 'Blend',
       roast: 'Light',
-      region: 'Colombia',
+      origin: 'Colombia',
     },
   },
   {
@@ -36,7 +36,7 @@ const coffeeData = [
     details: {
       type: 'Single Origin',
       roast: 'Medium',
-      region: 'Ethiopia',
+      origin: 'Ethiopia',
     },
   },
   {
@@ -47,7 +47,7 @@ const coffeeData = [
     details: {
       type: 'Decaf',
       roast: 'Light',
-      region: 'Guatemala',
+      origin: 'Guatemala',
     },
   },
   {
@@ -58,7 +58,7 @@ const coffeeData = [
     details: {
       type: 'Blend',
       roast: 'Dark',
-      region: 'Panama',
+      origin: 'Panama',
     },
   },
   {
@@ -69,7 +69,7 @@ const coffeeData = [
     details: {
       type: 'Single Origin',
       roast: 'Medium',
-      region: 'Costa Rica',
+      origin: 'Costa Rica',
     },
   },
   {
@@ -91,7 +91,7 @@ const coffeeData = [
     details: {
       type: 'Single Origin',
       roast: 'Light',
-      region: 'Ethiopia',
+      origin: 'Ethiopia',
     },
   },
   {
@@ -102,7 +102,7 @@ const coffeeData = [
     details: {
       type: 'Blend',
       roast: 'Medium',
-      region: 'Guatemala',
+      origin: 'Guatemala',
     },
   },
 ];
