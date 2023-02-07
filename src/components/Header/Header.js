@@ -9,7 +9,7 @@ import CartIcon from '@mui/icons-material/ShoppingCart';
 
 function Header() {
   return (
-    <AppBar position='static' elevation='0' sx={{ bgcolor: 'grey.700', marginBottom: '30px' }}>
+    <AppBar position='static' elevation={0} sx={{ bgcolor: 'grey.700', marginBottom: '30px' }}>
       <Toolbar>
         <CoffeeIcon sx={{ mr: 1 }} />
         <Typography
