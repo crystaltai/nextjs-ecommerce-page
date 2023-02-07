@@ -17,21 +17,25 @@ function FilterBar({ coffeeData, uniqueRoastTypes, uniqueRoastLevels, uniqueRoas
       <FilterCategory>Type</FilterCategory>
       <FormGroup>
         {uniqueRoastTypes.map(type => (
-          <FormControlLabel label={type} control={<Checkbox name={type} onChange={handleFilterToggle} />} />
+          <FormControlLabel
+            label={type}
+            key={type}
+            control={<Checkbox key={type} name={type} onChange={handleFilterToggle} />}
+          />
         ))}
       </FormGroup>
       {/* Roast Level */}
       <FilterCategory>Roast Level</FilterCategory>
       <FormGroup>
         {uniqueRoastLevels.map(level => (
-          <FormControlLabel label={level} control={<Checkbox name={level} />} />
+          <FormControlLabel label={level} key={level} control={<Checkbox key={level} name={level} />} />
         ))}
       </FormGroup>
       {/* Roast Origin */}
       <FilterCategory>Origin</FilterCategory>
       <FormGroup>
         {uniqueRoastOrigins.map(origin => (
-          <FormControlLabel label={origin} control={<Checkbox name={origin} />} />
+          <FormControlLabel label={origin} key={origin} control={<Checkbox key={origin} name={origin} />} />
         ))}
       </FormGroup>
     </Box>
