@@ -10,41 +10,44 @@ import './App.css';
 import FilterBar from './components/FilterBar/FilterBar';
 import { useState } from 'react';
 
+// Filters object
+const filters = {};
+
 // Filter bags for all unique values + assign false active - Roast Types
 let uniqueRoastTypes = coffeeData.map(bag => bag.details.type);
 uniqueRoastTypes = uniqueRoastTypes.filter((type, index) => uniqueRoastTypes.indexOf(type) === index);
-const uniqueRoastTypesActive = {};
+// const uniqueRoastTypesActive = {};
 uniqueRoastTypes.forEach(e => {
-  uniqueRoastTypesActive[e] = false;
+  filters[e] = false;
 });
 
 // Filter bags for all unique values + assign false active - Roast Level
 let uniqueRoastLevels = coffeeData.map(bag => bag.details.roast);
 uniqueRoastLevels = uniqueRoastLevels.filter((type, index) => uniqueRoastLevels.indexOf(type) === index);
-const uniqueRoastLevelsActive = {};
+// const uniqueRoastLevelsActive = {};
 uniqueRoastLevels.forEach(e => {
-  uniqueRoastLevelsActive[e] = false;
+  filters[e] = false;
 });
 
 // Filter bags for all unique values + assign false active - Roast Origin
 let uniqueRoastOrigins = coffeeData.map(bag => bag.details.origin);
 uniqueRoastOrigins = uniqueRoastOrigins.filter((type, index) => uniqueRoastOrigins.indexOf(type) === index);
-const uniqueRoastOriginsActive = {};
+// const uniqueRoastOriginsActive = {};
 uniqueRoastOrigins.forEach(e => {
-  uniqueRoastOriginsActive[e] = false;
+  filters[e] = false;
 });
 
 function App() {
-  const [filterRoastTypes, setFilterRoastTypes] = useState(uniqueRoastTypesActive);
-  console.log(filterRoastTypes);
+  const [activeFilters, setActiveFilters] = useState(filters);
+  console.log(activeFilters);
 
-  // Toggle filter Active
-  const handleFilterToggle = e => {
+  // Toggle filter Active - Roast Types
+  const toggleFilter = e => {
     const { name, checked } = e.target;
     if (checked === true) {
-      setFilterRoastTypes(prevObj => ({ ...prevObj, [name]: true }));
+      setActiveFilters(prevObj => ({ ...prevObj, [name]: true }));
     } else {
-      setFilterRoastTypes(prevObj => ({ ...prevObj, [name]: false }));
+      setActiveFilters(prevObj => ({ ...prevObj, [name]: false }));
     }
   };
 
@@ -63,7 +66,7 @@ function App() {
               uniqueRoastTypes={uniqueRoastTypes}
               uniqueRoastLevels={uniqueRoastLevels}
               uniqueRoastOrigins={uniqueRoastOrigins}
-              handleFilterToggle={handleFilterToggle}
+              toggleFilter={toggleFilter}
             />
           </Box>
           {/* Product Listings */}
