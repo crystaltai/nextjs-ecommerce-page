@@ -5,7 +5,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import { Price, RoastName, TastingNotes } from './Product.styles';
 import Box from '@mui/system/Box';
 
-function Product({ name, notes, price, picture }) {
+function Product({ name, notes, price, picture, type, roast, origin }) {
   return (
     <Card sx={{ maxWidth: 345 }} elevation={0}>
       <CardActionArea>
@@ -18,6 +18,9 @@ function Product({ name, notes, price, picture }) {
             ))}
           </Box>
           <Price>${((price * 100) / 100).toFixed(2)}</Price>
+          <p>{type}</p>
+          <p>{roast}</p>
+          <p>{origin}</p>
         </Box>
       </CardActionArea>
     </Card>
