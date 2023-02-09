@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-ecommerce-page/static/css/main.259e41b0.css",
-    "main.js": "/react-ecommerce-page/static/js/main.572b84f5.js",
+    "main.js": "/react-ecommerce-page/static/js/main.68498478.js",
     "static/media/coffee-bag-6.png": "/react-ecommerce-page/static/media/coffee-bag-6.c7c4782ba0258e4808f5.png",
     "static/media/coffee-bag-2.png": "/react-ecommerce-page/static/media/coffee-bag-2.8c788887e3aa3a87d5d8.png",
     "static/media/coffee-bag-3.png": "/react-ecommerce-page/static/media/coffee-bag-3.e3eaf781b4d150435083.png",
@@ -9,10 +9,10 @@
     "static/media/coffee-bag-4.png": "/react-ecommerce-page/static/media/coffee-bag-4.eb7f68de9758b7352cc4.png",
     "static/media/coffee-bag-5.png": "/react-ecommerce-page/static/media/coffee-bag-5.0eeaf7987b23123ff095.png",
     "index.html": "/react-ecommerce-page/index.html",
-    "main.572b84f5.js.map": "/react-ecommerce-page/static/js/main.572b84f5.js.map"
+    "main.68498478.js.map": "/react-ecommerce-page/static/js/main.68498478.js.map"
   },
   "entrypoints": [
     "static/css/main.259e41b0.css",
-    "static/js/main.572b84f5.js"
+    "static/js/main.68498478.js"
   ]
 }
