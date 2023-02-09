@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './theme';
 import Header from './components/Header/Header';
@@ -8,68 +9,93 @@ import Product from './components/Product/Product';
 import coffeeData from './constants';
 import './App.css';
 import FilterBar from './components/FilterBar/FilterBar';
-import { useEffect, useState } from 'react';
 
 // Filters object
-const filters = {};
+const filters = { type: {}, roast: {}, origin: {} };
 
 // Filter bags for all unique values + assign false active - Roast Types
 let uniqueRoastTypes = coffeeData.map(bag => bag.details.type);
 uniqueRoastTypes = uniqueRoastTypes.filter((type, index) => uniqueRoastTypes.indexOf(type) === index);
-// const uniqueRoastTypesActive = {};
 uniqueRoastTypes.forEach(e => {
-  filters[e] = false;
+  filters.type[e] = false;
 });
 
 // Filter bags for all unique values + assign false active - Roast Level
 let uniqueRoastLevels = coffeeData.map(bag => bag.details.roast);
 uniqueRoastLevels = uniqueRoastLevels.filter((type, index) => uniqueRoastLevels.indexOf(type) === index);
-// const uniqueRoastLevelsActive = {};
 uniqueRoastLevels.forEach(e => {
-  filters[e] = false;
+  filters.roast[e] = false;
 });
 
 // Filter bags for all unique values + assign false active - Roast Origin
 let uniqueRoastOrigins = coffeeData.map(bag => bag.details.origin);
 uniqueRoastOrigins = uniqueRoastOrigins.filter((type, index) => uniqueRoastOrigins.indexOf(type) === index);
-// const uniqueRoastOriginsActive = {};
 uniqueRoastOrigins.forEach(e => {
-  filters[e] = false;
+  filters.origin[e] = false;
 });
 
 function App() {
-  const [selectedFilters, setSelectedFilters] = useState(filters);
-  const [activeFilters, setActiveFilters] = useState([]);
-  const [filteredCoffeeData, setFilteredCoffeeData] = useState(coffeeData);
-  console.log(activeFilters);
+  // Manage state for checked filters by category: Type, Roast, Origin ------------
+  const [checkedTypes, setCheckedTypes] = useState(filters.type);
+  const [checkedRoasts, setCheckedRoasts] = useState(filters.roast);
+  const [checkedOrigins, setCheckedOrigins] = useState(filters.origin);
 
-  // Toggle filter Active - Roast Types
-  const toggleFilter = e => {
+  // Toggle check/uncheck filters -------------------------------------------------
+  // Type
+  const handleToggleType = e => {
     const { name, checked } = e.target;
-    if (checked === true) {
-      setSelectedFilters(prevObj => ({ ...prevObj, [name]: true }));
-    } else {
-      setSelectedFilters(prevObj => ({ ...prevObj, [name]: false }));
-    }
+    setCheckedTypes({ ...checkedTypes, [name]: checked });
   };
 
-  // Everytime there's a change in state for selectedFilters, update activeFilters
-  useEffect(() => {
-    //TODO: Add keys of active filters to array
-    const addActiveFilters = () => {
-      let selectedFiltersKeys = [];
-      for (let prop in selectedFilters) {
-        if (selectedFilters[prop] === true) {
-          selectedFiltersKeys.push(prop);
-        }
-      }
-      console.log(selectedFiltersKeys);
-      return selectedFiltersKeys;
-    };
+  // Roast
+  const handleToggleRoast = e => {
+    const { name, checked } = e.target;
+    setCheckedRoasts({ ...checkedRoasts, [name]: checked });
+  };
 
-    let activeFiltersList = addActiveFilters();
-    setActiveFilters(activeFiltersList);
-  }, [selectedFilters]);
+  // Origin
+  const handleToggleOrigin = e => {
+    const { name, checked } = e.target;
+    setCheckedOrigins({ ...checkedOrigins, [name]: checked });
+  };
+
+  // Apply filters ----------------------------------------------------------------
+  const handleFilter = () => {
+    // Create an array for filtered items and set to coffeeData
+    let filteredItems = coffeeData;
+
+    // If any Type filters are checked, apply filter to filteredItems
+    if (Object.values(checkedTypes).includes(true)) {
+      filteredItems = filteredItems.filter(item => {
+        return Object.keys(checkedTypes).some(filter => {
+          return checkedTypes[filter] && item.details.type === filter;
+        });
+      });
+    }
+
+    // If any Roast filters are checked, apply filter to filteredItems
+    if (Object.values(checkedRoasts).includes(true)) {
+      filteredItems = filteredItems.filter(item => {
+        return Object.keys(checkedRoasts).some(filter => {
+          return checkedRoasts[filter] && item.details.roast === filter;
+        });
+      });
+    }
+
+    // If any Origin filters are checked, apply filter to filteredItems
+    if (Object.values(checkedOrigins).includes(true)) {
+      filteredItems = filteredItems.filter(item => {
+        return Object.keys(checkedOrigins).some(filter => {
+          return checkedOrigins[filter] && item.details.origin === filter;
+        });
+      });
+    }
+
+    // Return final array of filtered items
+    return filteredItems;
+  };
+
+  const filteredCoffeeData = handleFilter();
 
   return (
     <ThemeProvider theme={theme}>
@@ -86,7 +112,9 @@ function App() {
               uniqueRoastTypes={uniqueRoastTypes}
               uniqueRoastLevels={uniqueRoastLevels}
               uniqueRoastOrigins={uniqueRoastOrigins}
-              toggleFilter={toggleFilter}
+              handleToggleType={handleToggleType}
+              handleToggleRoast={handleToggleRoast}
+              handleToggleOrigin={handleToggleOrigin}
             />
           </Box>
           {/* Product Listings */}
@@ -101,6 +129,9 @@ function App() {
                       notes={coffee.notes}
                       price={coffee.price}
                       picture={coffee.picture}
+                      type={coffee.details.type}
+                      roast={coffee.details.roast}
+                      origin={coffee.details.origin}
                     />
                   </Grid>
                 ))}
