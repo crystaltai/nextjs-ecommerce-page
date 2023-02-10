@@ -59,10 +59,21 @@ const theme = createTheme({
         disableRipple: true, // Disable ripple effect when clicked
       },
     },
+    // Card
     MuiCard: {
       styleOverrides: {
         root: {
           backgroundColor: 'transparent',
+        },
+      },
+    },
+    // Card Action Area TODO:
+    MuiCardActionArea: {
+      styleOverrides: {
+        root: {
+          '&:hover $focusHighlight': {
+            opacity: 0,
+          },
         },
       },
     },
