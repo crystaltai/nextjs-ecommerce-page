@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import { Price, RoastName, TastingNotes } from './Product.styles';
 import Box from '@mui/system/Box';
-import ProductModal from '../ProductModal/ProductModal';
+import ProductModal from './ProductModal';
 
 function Product({ name, notes, price, picture, type, roast, origin }) {
   // Modal open/close state
@@ -16,7 +16,17 @@ function Product({ name, notes, price, picture, type, roast, origin }) {
   return (
     <Card sx={{ maxWidth: 345 }} elevation={0}>
       <CardActionArea onClick={handleOpen}>
-        <ProductModal open={open} handleClose={handleClose} type={type} roast={roast} origin={origin} />
+        <ProductModal
+          open={open}
+          handleClose={handleClose}
+          name={name}
+          notes={notes}
+          price={price}
+          picture={picture}
+          type={type}
+          roast={roast}
+          origin={origin}
+        />
         <CardMedia component='img' height='100%' src={picture} alt={name} />
         <Box sx={{ padding: '5px' }}>
           <RoastName>{name}</RoastName>
@@ -26,9 +36,6 @@ function Product({ name, notes, price, picture, type, roast, origin }) {
             ))}
           </Box>
           <Price>${((price * 100) / 100).toFixed(2)}</Price>
-          <p>{type}</p>
-          <p>{roast}</p>
-          <p>{origin}</p>
         </Box>
       </CardActionArea>
     </Card>
